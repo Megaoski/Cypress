@@ -190,6 +190,12 @@ Cypress.Commands.add('Login', (string) => {
         cy.get('body').type('{uparrow}'); 
         cy.get('body').type('{enter}');//click on Buscar
     }  
+    else if (string == 'Peliculas') {
+
+        cy.get('body').type('{backspace}');//focus lateral menu
+        cy.get('body').type('{downarrow}'); 
+        cy.get('body').type('{enter}');//click on Peliculas
+    }  
     
  })
 
