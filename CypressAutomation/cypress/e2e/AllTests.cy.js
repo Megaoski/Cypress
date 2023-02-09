@@ -2,5 +2,5 @@
 import './Login.cy.js'
 import './SearchMedia.cy'
 import './PlayMedia.cy'
-import './PremierFilter.cy'
+import './CheckFilters.cy'
 

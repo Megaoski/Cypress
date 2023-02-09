@@ -200,4 +200,14 @@ Cypress.Commands.add('Login', (string) => {
  })
 
 
+Cypress.Commands.add('VisitURL', () => {
+    
+    var str = 'https://stage2-tv-app-webos.filmin.es/';
+
+    // write on keyboard the search term
+    cy.visit(str);
+
+ })
+
+
 

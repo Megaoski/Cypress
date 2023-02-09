@@ -6,8 +6,8 @@ describe('PlayMedia', function() {
       //-----------LOGIN-------------------------------
       //-----------------------------------------------
 
-      // Change url whenever we want to test a new deploy(stage1 etc)
-      cy.visit('https://stage1-tv-app-webos.filmin.es/')
+       // Change url from function whenever we want to test a new deploy(stage1 etc)
+       cy.VisitURL();
 
       // Assertion to wait for home page to load               
       cy.url().should('include', '/#/react');
