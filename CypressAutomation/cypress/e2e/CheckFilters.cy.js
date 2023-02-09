@@ -17,7 +17,7 @@ describe('CheckFilters', function() {
       //Assertion to wait for login page to load
       cy.url().should('include', '/#/login');
       
-      cy.wait(1000)
+      cy.wait(1000);
 
       //Introduce username
       cy.Login('oscarsubesp');
@@ -65,8 +65,24 @@ describe('CheckFilters', function() {
         
       //check if saved log variable contains EN SUBSCRIPCIÓN since it should always be active by default in the catalog
       cy.get('.catalog-filter-element.ng-scope').should('contain.text', 'EN SUBSCRIPCIÓN');
+      //check that EN ALQUILER filter is never activated by default in the catalog
+      cy.get('.catalog-filter-element.ng-scope').should('not.contain.text', 'EN ALQUILER');
 
       //-----------NOW WE NEED TO CHECK THAT THE FILTERS WORK, BUT HOW?
+
+      cy.wait(1000);
+
+      // position focus to the filters zone
+      cy.get('body').type('{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}');
+      cy.get('body').type('{enter}{downarrow}{enter}');//select the EN ALQUILER FILTER
+      cy.wait(1000);
+      cy.get('body').type('{backspace}');//reposition focus to first catalog element
+      cy.wait(5000);  
+      // check that the EN ALQUILER filter is working and the first movie default focused has en premier info
+      cy.get('.catalog-filter-element.ng-scope').should('contain.text', 'EN SUBSCRIPCIÓN');
+      //cy.get('body').should('have.attr', 'premier-white-ticket-image');
+      //cy.focused().should('contain.text', 'item.is_premier');
+      //cy.get('.catalog-filter-element.ng-scope.ng-if').should('contain.text', 'item.is_premier');
 
     })
 
